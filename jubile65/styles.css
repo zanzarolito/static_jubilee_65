@@ -1,0 +1,98 @@
+:root {
+  --blue: #0A2E6E;
+  --blue-700: #0a2a60;
+  --gold: #FFD700;
+  --text: #1b1b1b;
+  --muted: #5f6b7a;
+  --bg: #ffffff;
+  --container: 1120px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+.container { max-width: var(--container); margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.header {
+  position: sticky; top: 0; z-index: 40;
+  background: #fff; border-bottom: 1px solid #eef0f4;
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+.brand img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+.nav { display: flex; gap: 24px; }
+.nav a { color: var(--text); text-decoration: none; font-weight: 600; }
+.nav a:hover { color: var(--blue); }
+
+/* Hero */
+.hero { position: relative; min-height: 56vh; display: grid; place-items: center; color: #fff; }
+.hero::before {
+  content: ""; position: absolute; inset: 0;
+  background: url('/assets/hero.jpg') center/cover no-repeat;
+  filter: grayscale(10%);
+}
+.hero::after {
+  content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.35);
+}
+.hero-content { position: relative; text-align: center; padding: 60px 20px; }
+.hero h1 { font-family: Poppins, Montserrat, sans-serif; font-weight: 800; letter-spacing: 2px; font-size: clamp(44px, 8vw, 120px); margin: 0; }
+.hero h2 { font-weight: 700; margin: 8px 0 0; letter-spacing: 4px; }
+
+/* Section titles */
+.section { padding: 56px 0; }
+.section h3 { font-family: Poppins, Montserrat, sans-serif; font-size: clamp(26px, 3vw, 36px); margin: 0 0 24px; }
+
+/* Events list */
+.events-list { display: grid; gap: 22px; }
+.event {
+  display: grid; grid-template-columns: 160px 1fr; gap: 18px; align-items: center;
+  background: #fff; border: 1px solid #eef0f4; border-radius: 14px; padding: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+.event img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 10px; }
+.event h4 { margin: 0 0 6px; font-size: 18px; }
+.event .meta { color: var(--muted); font-size: 14px; margin-bottom: 6px; }
+.event .addr { color: var(--muted); font-size: 14px; display: flex; gap: 8px; align-items: center; }
+.pin { width: 14px; height: 14px; display: inline-block; background: var(--gold); border-radius: 50%; box-shadow: 0 0 0 3px rgba(255,215,0,.25); }
+
+@media (max-width: 720px) {
+  .event { grid-template-columns: 1fr; }
+}
+
+/* Carousel section */
+.section--blue { background: var(--blue); color: #fff; }
+.section--blue h3 { color: #fff; text-align: center; margin-bottom: 26px; }
+.carousel { position: relative; overflow: hidden; }
+.track { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 1fr); gap: 18px; transition: transform .4s ease; }
+.slide { background: #fff; color: var(--text); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.1); overflow: hidden; }
+.slide img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+.slide .cap { padding: 10px 12px; font-size: 14px; color: var(--muted); }
+
+.ctrl { position: absolute; inset: 0; pointer-events: none; }
+.btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: #fff; color: var(--blue); border: none; pointer-events: all;
+  width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0,0,0,.2);
+}
+.btn:hover { background: #f6f7fb; }
+.btn.prev { left: -4px; }
+.btn.next { right: -4px; }
+
+/* Gallery */
+.gallery { display: grid; grid-template-columns: repeat(12, 1fr); gap: 12px; }
+.gallery img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+.gallery .span-12 { grid-column: span 12; }
+.gallery .span-6 { grid-column: span 6; }
+@media (max-width: 720px) {
+  .gallery .span-6 { grid-column: span 12; }
+}
+
+/* Footer */
+.footer { padding: 36px 0; border-top: 1px solid #eef0f4; color: var(--muted); }
+.footer a { color: #64748b; text-decoration: none; }
+.footer a:hover { color: var(--blue); }
