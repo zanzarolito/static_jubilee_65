@@ -30,10 +30,12 @@ const completeTaskSchema = {
  * @param server - The MCP server to register the tool on
  */
 export function registerCompleteTask(server: McpServer): void {
-  server.tool(
+  server.registerTool(
     "complete_task",
-    "Marks a task as done in the Todo app. Use list_tasks first to find the task ID.",
-    completeTaskSchema,
+    {
+      description: "Marks a task as done in the Todo app. Use list_tasks first to find the task ID.",
+      inputSchema: completeTaskSchema,
+    },
     async ({ id }) => {
       const response = await fetch(`${TODO_API}/tasks/${id}`, {
         method: "PATCH",

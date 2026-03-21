@@ -30,10 +30,12 @@ const listTasksSchema = {
  * @param server - The MCP server to register the tool on
  */
 export function registerListTasks(server: McpServer): void {
-  server.tool(
+  server.registerTool(
     "list_tasks",
-    "Returns all tasks from the Todo app. Use the optional `status` parameter to filter by completion status.",
-    listTasksSchema,
+    {
+      description: "Returns all tasks from the Todo app. Use the optional `status` parameter to filter by completion status.",
+      inputSchema: listTasksSchema,
+    },
     async ({ status }) => {
       const url = `${TODO_API}/tasks?status=${status}`;
 

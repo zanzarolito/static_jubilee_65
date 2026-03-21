@@ -30,10 +30,12 @@ const deleteTaskSchema = {
  * @param server - The MCP server to register the tool on
  */
 export function registerDeleteTask(server: McpServer): void {
-  server.tool(
+  server.registerTool(
     "delete_task",
-    "Permanently deletes a task from the Todo app. This action cannot be undone. Use list_tasks first to find the task ID.",
-    deleteTaskSchema,
+    {
+      description: "Permanently deletes a task from the Todo app. This action cannot be undone. Use list_tasks first to find the task ID.",
+      inputSchema: deleteTaskSchema,
+    },
     async ({ id }) => {
       const response = await fetch(`${TODO_API}/tasks/${id}`, {
         method: "DELETE",

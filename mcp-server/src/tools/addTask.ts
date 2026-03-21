@@ -33,10 +33,12 @@ const addTaskSchema = {
  * @param server - The MCP server to register the tool on
  */
 export function registerAddTask(server: McpServer): void {
-  server.tool(
+  server.registerTool(
     "add_task",
-    "Creates a new task in the Todo app. Returns the created task with its assigned ID.",
-    addTaskSchema,
+    {
+      description: "Creates a new task in the Todo app. Returns the created task with its assigned ID.",
+      inputSchema: addTaskSchema,
+    },
     async ({ title, description }) => {
       const response = await fetch(`${TODO_API}/tasks`, {
         method: "POST",
