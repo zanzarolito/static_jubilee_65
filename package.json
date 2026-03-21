@@ -1,0 +1,12 @@
+{
+  "name": "mcp-todo-server-workspace",
+  "version": "1.0.0",
+  "description": "MCP Todo Server — tutorial workspace",
+  "private": true,
+  "scripts": {
+    "start:todo": "cd todo-app && npm run dev",
+    "start:mcp": "cd mcp-server && npm run dev",
+    "test:mcp": "echo '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/list\"}' | cd mcp-server && npx tsx src/index.ts",
+    "install:all": "cd todo-app && npm install && cd ../mcp-server && npm install"
+  }
+}
