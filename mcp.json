@@ -1,0 +1,36 @@
+{
+  "_comment": "Configuration examples for registering this MCP server in various clients",
+
+  "claude_desktop": {
+    "_doc": "Add this to ~/Library/Application Support/Claude/claude_desktop_config.json (macOS) or %APPDATA%\\Claude\\claude_desktop_config.json (Windows)",
+    "mcpServers": {
+      "todo": {
+        "command": "npx",
+        "args": ["tsx", "/ABSOLUTE/PATH/TO/mcp-todo-server/mcp-server/src/index.ts"],
+        "env": {
+          "TODO_API_URL": "http://localhost:3000"
+        }
+      }
+    }
+  },
+
+  "claude_code_cli": {
+    "_doc": "Run this command to add the server to Claude Code CLI:",
+    "command": "claude mcp add todo -- npx tsx /ABSOLUTE/PATH/TO/mcp-todo-server/mcp-server/src/index.ts",
+    "env_var": "TODO_API_URL=http://localhost:3000"
+  },
+
+  "cursor": {
+    "_doc": "Add to Cursor settings under MCP servers section:",
+    "mcp": {
+      "servers": {
+        "todo": {
+          "command": "npx tsx /ABSOLUTE/PATH/TO/mcp-todo-server/mcp-server/src/index.ts",
+          "env": {
+            "TODO_API_URL": "http://localhost:3000"
+          }
+        }
+      }
+    }
+  }
+}
